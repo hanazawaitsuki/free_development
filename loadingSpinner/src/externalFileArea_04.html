@@ -1,0 +1,67 @@
+<!-- Geminiに書かせてみた -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazysizesを使った遅延読み込み</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #333;
+            z-index: 1000;
+        }
+        /* lazysizesがロード中の要素に適用するスタイル (オプション) */
+        img.lazyload, iframe.lazyload {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            min-height: 200px; /* プレースホルダーの高さ確保 */
+            background-color: #e0e0e0;
+            object-fit: cover;
+        }
+        img.lazyload.lazyloading {
+            /* 読み込み中のアニメーションなど */
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        img.lazyload.lazyloaded {
+            /* 読み込み完了後のスタイル */
+            opacity: 1;
+        }
+
+        #content-container {
+            min-height: 500px; /* コンテンツ領域の初期高さを確保 */
+            border: 1px dashed #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>lazysizesとfetchを使った遅延読み込み</h1>
+
+    <div id="loading-overlay">
+        <p>コンテンツを読み込み中...</p>
+    </div>
+
+    <div id="content-container"></div>
+
+    <!-- lazysizesライブラリの読み込み -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async=""></script>
+
+    <script src="external_file_action_04.js" defer></script>
+</body>
+</html>
