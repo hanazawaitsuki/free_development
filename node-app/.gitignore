@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+dist/
+build/
+*.js
+*.js.map
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS・エディタ関連
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# 環境変数ファイル（セキュリティ対策）
+.env
+.env.local
+.env.*.local
